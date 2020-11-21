@@ -1,0 +1,64 @@
+{% extends "home.html" %}
+{% from "field-macro.html" import displayField %}
+{% block body %}
+<!--page header -->
+<!-- Page Header -->
+  <header class="masthead" style="background-image: url({{ url_for("static", filename="img/home-bg.jpg")}}">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="site-heading">
+            <h1>Order</h1>
+            <span class="subheading">Digital Trends - Order Portal</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+  <!-- main content-->
+{% with messages = get_flashed_messages(with_categories=true) %}
+                    <!-- The messages, if any, are returned as a list. And not all redenring of the pages will have a message. So we put a condition to check whether the messages list is empty -->
+                    {% if messages %}
+                        <!-- We will set the class form our custom css file we had created earlier. And we want to see the first item in the list. -->
+                        <div class="alert alert-{{ messages[0][0] }} " role="alert">
+                            {{ messages[0][1] }}
+                        </div>
+                        <hr>
+                    {% endif %}
+                {% endwith %}
+<h2> Order Now </h2>
+<p> Enter Your details below to order </p>
+ <div class="container col-lg-10 mb-3">
+ <div class="card mb-3 py-1">
+        <h5 class="text-muted font-weight-light">{{ username }}</h5
+            </div>
+            </div>
+  <form action="{{ url_for("order")}}", method="POST">
+  <div class="container my-3">
+  <div class="row">
+  <div class="col-lg-12">
+            {{ displayField(form.name, 'Order-name', autocomplete="off", autofocus=true) }}
+         </div>
+  <div class="col-lg-12">
+            {{ displayField(form.email, 'Email') }}
+<div class="col-lg-12">
+            {{ displayField(form.message, 'Description') }}
+         </div>
+         </div>
+            </div>
+            
+<div class="form-group my-2">
+                <input type="submit" href="#" value="Submit" class="btn btn-warning">
+            </div>          
+            {{ form.csrf_token }}
+        </form>
+
+        <hr>
+<p class="font-weight-normal text-center mt-2">NOTE</p>
+<p class="font-weight-normal text-center">Please specify your work name in order-name section and other details about the work should be defined in description section</p>
+<p class="font-weight-normal text-center">After submitting the Successful Order Please Go for Payment Option and pay through Your Upi or wallet</p>
+<p class="font-weight-normal text-center">Please Wait for our replay we will Soon contact you after confirming your payment. Dont spam our emails unnecessarily</p>
+<p class="font-weight-normal text-center">Pay money through our official website only. Have a safe payment</p>
+
+{% endblock %}
