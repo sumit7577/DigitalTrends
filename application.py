@@ -9,7 +9,7 @@ import os
 
 app = Flask(__name__)
 app.secret_key =  "b'f\xfa\x8b{X\x8b\x9eM\x83l\x19\xad\x84\x08\xaa"
-app.config['SQLALCHEMY_DATABASE_URI']="postgres://zdnflzvvlqpfnh:969ea6081a951573fea186d2529458d67b47aa4c74aaa6ffe115c4e67edb57d9@ec2-3-224-38-18.compute-1.amazonaws.com:5432/d6875qun2srg99"
+app.config['SQLALCHEMY_DATABASE_URI']="paste your uri here"
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config.update(MAIL_SERVER="smtp.gmail.com",
 MAIL_PORT="465",
